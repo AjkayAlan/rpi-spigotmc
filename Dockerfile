@@ -4,11 +4,15 @@ MAINTAINER github.com/AjkayAlan
 
 # Update package lists, install jre, and cleanup
 RUN apt-get update \
-    && apt-get install -y oracle-java8-jdk wget nano \
+    && apt-get install -y oracle-java8-jdk wget nano git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /spigot
+# Create volume to interact with
+VOLUME ["/data"]
+
+# Set workdir
+WORKDIR /data
 
 # Accept Mojang EULA
 RUN echo "eula=TRUE" > eula.txt
@@ -21,12 +25,17 @@ RUN echo "[]" > usercache.json
 RUN echo "[]" > whitelist.json
 
 # Add server settings
-ADD server.properties /spigot/
+ADD server.properties /data/
 
-# Download compiled spigotmc host (building takes a long time)
-RUN wget https://ci.mcadmin.net/job/Spigot/lastSuccessfulBuild/artifact/spigot-1.10.2.jar
+# Build latest spigot image
+mkdir /data/temp \
+    && cd /data/temp \
+    && wget -O BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar \
+    && java -jar BuildTools.jar --rev latest \
+    && mv spigot-*.jar /data/spigot_server.jar \
+    && rm -rf /data/temp
 
 # Expose the port needed to connect
 EXPOSE 25565
 
-CMD java -Xms512M -Xmx1008M -jar /spigot/spigot-1.10.2.jar nogui
+CMD java -Xms512M -Xmx1008M -jar /data/spigot-server.jar nogui

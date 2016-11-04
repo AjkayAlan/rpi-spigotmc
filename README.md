@@ -13,4 +13,4 @@ If you have cloned locally, you can do something like the following instead:
 ## Running
 After building the container, you will want to run it.
 
-`docker run --name rpi-spigotmc --restart always -p 25565:25565 -d ajkayalan/rpi-spigotmc:latest`
+`docker run -d -it --name rpi-spigotmc --restart always -p 25565:25565  ajkayalan/rpi-spigotmc:latest --noconsole`
