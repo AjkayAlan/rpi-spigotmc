@@ -32,7 +32,8 @@ RUN mkdir /data/temp \
     && cd /data/temp \
     && wget -O BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar \
     && java -jar BuildTools.jar --rev latest \
-    && mv spigot-*.jar /data/spigot_server.jar \
+
+RUN mv spigot-*.jar /data/spigot_server.jar \
     && rm -rf /data/temp
 
 # Expose the port needed to connect
