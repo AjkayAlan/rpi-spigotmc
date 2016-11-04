@@ -38,4 +38,4 @@ RUN mkdir /data/temp \
 # Expose the port needed to connect
 EXPOSE 25565
 
-CMD java -Xms512M -Xmx1008M -jar /data/spigot-server.jar nogui
+CMD java -Xms512M -Xmx1008M -jar /data/spigot_server.jar nogui
