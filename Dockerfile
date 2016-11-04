@@ -4,7 +4,7 @@ MAINTAINER github.com/AjkayAlan
 
 # Update package lists, install jre, and cleanup
 RUN apt-get update \
-    && apt-get install -y oracle-java8-jdk wget \
+    && apt-get install -y oracle-java8-jdk wget nano \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
