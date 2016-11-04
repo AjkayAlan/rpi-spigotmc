@@ -28,7 +28,7 @@ RUN echo "[]" > whitelist.json
 ADD server.properties /data/
 
 # Build latest spigot image
-mkdir /data/temp \
+RUN mkdir /data/temp \
     && cd /data/temp \
     && wget -O BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar \
     && java -jar BuildTools.jar --rev latest \
