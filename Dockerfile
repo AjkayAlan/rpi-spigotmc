@@ -9,7 +9,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Create volume and set workdir
-VOLUME ["/data"]
 WORKDIR /data
 
 # Accept Mojang EULA
