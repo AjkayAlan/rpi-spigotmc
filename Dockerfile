@@ -4,7 +4,7 @@ MAINTAINER github.com/AjkayAlan
 
 # Update package lists, install jre, and cleanup
 RUN apt-get update \
-    && apt-get install -y oracle-java8-jdk wget nano git \
+    && apt-get install -y oracle-java8-jdk wget nano \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -18,7 +18,7 @@ RUN echo "eula=TRUE" > /data/eula.txt
 ADD server.properties /data/
 
 # Get latest compiled build
-wget -P /data/ -O spigot_server.jar https://ci.mcadmin.net/job/Spigot/lastSuccessfulBuild/artifact/spigot*.jar
+RUN wget -P /data/ -O spigot_server.jar https://ci.mcadmin.net/job/Spigot/lastSuccessfulBuild/artifact/spigot*.jar
 
 # Expose the port needed to connect
 EXPOSE 25565
