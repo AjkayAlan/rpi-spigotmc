@@ -28,6 +28,8 @@ Now you can perform server console commands for the minecraft server. For exampl
 
 `op YourMinecraftNameHere`  
 
+Remember to exit the attached container by pressing CTRL + P & CTRL Q. If you press CTRL + C, you will kill the container!  
+
 ## Installing Plugins
 To install a plugin, first you must find where your data volume is located. To find the id of your container, type:  
 
