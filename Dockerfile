@@ -11,18 +11,8 @@ RUN apt-get update \
 # Create volume to interact with
 VOLUME ["/data"]
 
-# Set workdir
-WORKDIR /data
-
 # Accept Mojang EULA
-RUN echo "eula=TRUE" > eula.txt
-
-# Silence harmless but scary sounding errors
-RUN echo "[]" > banned-ips.json
-RUN echo "[]" > banned-players.json
-RUN echo "[]" > ops.json
-RUN echo "[]" > usercache.json
-RUN echo "[]" > whitelist.json
+RUN echo "eula=TRUE" > /data/eula.txt
 
 # Add server settings
 ADD server.properties /data/
