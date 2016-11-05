@@ -11,13 +11,13 @@ RUN apt-get update \
 WORKDIR /data
 
 # Accept Mojang EULA
-RUN echo "eula=TRUE" > /data/eula.txt
+RUN echo "eula=TRUE" > eula.txt
 
 # Add server settings
 ADD server.properties /data/
 
 # Get latest compiled build
-RUN wget -P /data/ -O spigot_server.jar https://ci.mcadmin.net/job/Spigot/lastSuccessfulBuild/artifact/spigot*.jar
+RUN wget -O spigot_server.jar https://ci.mcadmin.net/job/Spigot/lastSuccessfulBuild/artifact/spigot*.jar
 
 # Expose the port needed to connect
 EXPOSE 25565
