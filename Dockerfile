@@ -8,6 +8,8 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /data
+
 # Accept Mojang EULA
 RUN echo "eula=TRUE" > /data/eula.txt
 
