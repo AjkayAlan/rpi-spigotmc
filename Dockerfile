@@ -30,10 +30,9 @@ ADD server.properties /data/
 # Build latest spigot image
 RUN mkdir /data/temp \
     && cd /data/temp \
-    && wget -O BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar \
-    && java -jar BuildTools.jar --rev latest
-
-RUN mv /data/temp/spigot-*.jar /data/spigot_server.jar \
+    && wget -P /data/temp -O BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar \
+    && java -jar /data/temp/BuildTools.jar --rev latest \
+    && mv spigot-*.jar /data/spigot_server.jar \
     && rm -rf /data/temp
 
 # Expose the port needed to connect
