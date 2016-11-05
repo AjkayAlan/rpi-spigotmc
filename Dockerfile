@@ -17,13 +17,8 @@ RUN echo "eula=TRUE" > /data/eula.txt
 # Add server settings
 ADD server.properties /data/
 
-# Build latest spigot image
-RUN mkdir /data/temp \
-    && cd /data/temp \
-    && wget -P /data/temp -O BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar \
-    && java -jar /data/temp/BuildTools.jar --rev latest \
-    && mv spigot-*.jar /data/spigot_server.jar \
-    && rm -rf /data/temp
+# Get latest compiled build
+wget -P /data/ -O spigot_server.jar https://ci.mcadmin.net/job/Spigot/lastSuccessfulBuild/artifact/spigot*.jar
 
 # Expose the port needed to connect
 EXPOSE 25565
