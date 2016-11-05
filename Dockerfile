@@ -17,7 +17,7 @@ RUN echo "eula=TRUE" > eula.txt
 ADD server.properties /data/
 
 # Get latest compiled build
-RUN wget -O spigot_server.jar https://ci.mcadmin.net/job/Spigot/lastSuccessfulBuild/artifact/spigot*.jar
+RUN wget -O spigot_server.jar http://tcpr.ca/files/spigot/spigot-latest.jar
 
 # Expose the port needed to connect
 EXPOSE 25565
