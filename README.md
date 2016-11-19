@@ -68,6 +68,7 @@ Then grab the path of your data volume by running:
 
 Now you can do something like copy your volume's data to a backup directory:  
 
+`sudo -i`  
 `mkdir -p /data/rpi-spigotmc/backup-11192016-0904AM`
 `cd /data/rpi-spigotmc/backup-11192016-0904AM`
 `cp -r /var/lib/docker/volumes/1d5490cb800a3d567b4fc330ff678754f4e05f972c992a3895e326277611b339/_data .`  
@@ -83,6 +84,7 @@ Then grab the path of your data volume by running:
 
 CD into that directory:  
 
+`sudo -i`  
 `cd /var/lib/docker/volumes/1d5490cb800a3d567b4fc330ff678754f4e05f972c992a3895e326277611b339/_data`
 
 Then simply update your spigot_server.jar file with the newly updated one. Here is how I could get mine:  
