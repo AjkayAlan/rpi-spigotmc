@@ -56,3 +56,39 @@ If you played around building containers a lot, you may want to clear out orphan
 `docker volume rm $(docker volume ls -qf dangling=true)`  
 
 Note that this command is very powerful and should be used at your own risk.
+
+## Server Backup
+If you want to backup your server, you can do so by copying the data volume contents to where your backup location is. Get your container id with:  
+
+`docker ps -a`  
+
+Then grab the path of your data volume by running:  
+
+`docker inspect -f '{{ (index .Mounts 0).Source }}' containerid`  
+
+Now you can do something like copy your volume's data to a backup directory:  
+
+`mkdir -p /data/rpi-spigotmc/backup-11192016-0904AM`
+`cd /data/rpi-spigotmc/backup-11192016-0904AM`
+`cp -r /var/lib/docker/volumes/1d5490cb800a3d567b4fc330ff678754f4e05f972c992a3895e326277611b339/_data .`  
+
+## Server Update
+Before updating your server, first make sure you have backed up your server.  Updating is relatively simple. First, find your data volume. Get your container id with:  
+
+`docker ps -a`  
+
+Then grab the path of your data volume by running:  
+
+`docker inspect -f '{{ (index .Mounts 0).Source }}' containerid`  
+
+CD into that directory:  
+
+`cd /var/lib/docker/volumes/1d5490cb800a3d567b4fc330ff678754f4e05f972c992a3895e326277611b339/_data`
+
+Then simply update your spigot_server.jar file with the newly updated one. Here is how I could get mine:  
+
+`wget -O spigot_server.jar http://tcpr.ca/files/spigot/spigot-latest.jar`  
+
+Now just restart your minecraft server:
+
+`docker restart containerid`
