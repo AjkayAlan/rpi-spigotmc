@@ -1,6 +1,6 @@
 # Newer jessie images are busted
-FROM resin/rpi-raspbian:jessie-20160831
-MAINTAINER github.com/AjkayAlan
+FROM resin/rpi-raspbian:stretch
+LABEL maintainer="github.com/AjkayAlan"
 
 # Update package lists, install jre, and cleanup
 RUN apt-get update \
