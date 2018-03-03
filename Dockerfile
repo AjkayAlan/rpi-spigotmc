@@ -1,4 +1,3 @@
-# Newer jessie images are busted
 FROM resin/rpi-raspbian:stretch
 LABEL maintainer="github.com/AjkayAlan"
 
